@@ -1,0 +1,113 @@
+/* Reset some default styles */
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, button, label {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    height: 100%;
+}
+
+body {
+    line-height: 1.6;
+    font-family: Arial, sans-serif;
+}
+
+/* Container for central alignment */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Header styling */
+header {
+    background-color: #FF5A5F;
+    padding: 20px 0;
+}
+
+header div {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+header div::before {
+    content: "ISR Assignment";
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Main content styling */
+main {
+    padding: 40px 0;
+    background-color: #f7f7f7;
+}
+
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+}
+
+input[name="search_query"] {
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.radio-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.radio-container label {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+button {
+    width: 30%;
+    padding: 10px;
+    background-color: #FF5A5F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #e04e50;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    form {
+        width: 100%;
+    }
+
+    input[name="search_query"], button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .radio-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

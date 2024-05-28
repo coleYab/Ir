@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRS Assignment</title>
+    <!-- linking the favicon -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+</head>
+<body>
+    <header><div></div></header>
+    <main>
+        <div class="container">
+            <form action="{{ url_for('home') }}" method="post">
+                <input placeholder="Enter Search Query" name="search_query" required>
+                <div class="radio-container">
+                    <label for="enable-stemming">Enable stemming:</label>
+                    <input type="radio" id="enable-stemming" name="stemming" value="yes">
+                </div>
+                <button type="submit">Search</button>
+            </form>    
+        </div>
+    </main>
+</body>
+</html>
