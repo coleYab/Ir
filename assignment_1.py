@@ -1,16 +1,16 @@
+import json
 import matplotlib.pyplot as plt
 
-from models.file import File, read_from_all_files
-from models.helpers import calculate_ranks, count_frequency, sort_dict
-from models.text import tokenizer
+from models.text_operations import tokenizer
+from models.helpers import count_term_frequency as count_frequency, load_obj, read_from_file, sort_dict
 
 
 def draw_graph(frequency: list) -> None:
     """
     draw_graph: draws graph.
     """
-    rank_ = calculate_ranks(frequency)
-    plt.plot(rank_, frequency)
+    rank_ = [i for i in range(1, len(frequency) + 1)]
+    plt.plot(rank_, sorted(frequency, reverse=True))
     plt.ylabel('Frequency of terms')
     plt.xlabel('Rank of terms')
     plt.title('Frequency - Rank Graph')
@@ -30,21 +30,15 @@ def plot_table(data, column_labels):
 
 
 
-def main(): 
-    paths = ['file/file1.txt', 'file/file2.txt', 'file/file3.txt']
-    files = [ File(name, set()) for name in paths ]
-    print(files)
-    text = read_from_all_files(files)
-    text_list = tokenizer(text)
-    text_frequency = count_frequency(text_list)
-    text_frequency = sort_dict(text_frequency)
+def main():
+    text_frequency = load_obj('prog_data/term_freq.json')
     draw_graph(text_frequency.values())
+    with open('test.json','w') as file:
+        json.dump(text_frequency, file)
 
 
 def main1():
-    paths = ['file/file1.txt', 'file/file2.txt', 'file/file3.txt']    
-    files = [ File(name, set()) for name in paths ]
-    text = read_from_all_files(files)
+    text = read_from_file('static/files/original.txt')
     text_list = tokenizer(text)
     text_frequency = count_frequency(text_list)
     text_frequency = sort_dict(text_frequency)
@@ -59,8 +53,10 @@ def main1():
             [word, freq, count, round(percent_occurance, 2), round(percent_occurance*count, 2)]
         )
 
-    column_labels = ["Word", "Frequency", "Rank", "% occurance","r*f"]
+    column_labels = ["Word", "Frequency", "Rank", "% of occurance","r*f"]
     plot_table(data[0:10], column_labels)
 
 if __name__ == '__main__':
+    # After the end of this stage we will generate a json file that will consists of term in the files
+    # and their initial frequencies used in the first term this will be used by second assignment
     main()

@@ -13,10 +13,6 @@
         <div class="container">
             <form action="{{ url_for('home') }}" method="post">
                 <input placeholder="Enter Search Query" name="search_query" required>
-                <div class="radio-container">
-                    <label for="enable-stemming">Enable stemming:</label>
-                    <input type="radio" id="enable-stemming" name="stemming" value="yes">
-                </div>
                 <button type="submit">Search</button>
             </form>    
         </div>

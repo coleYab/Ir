@@ -56,19 +56,19 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Rank</th>
                     <th>Title</th>
-                    <th>Description</th>
-                    <th>URL</th>
+                    <th>Cos Simmilarity</th>
+                    <th>File path</th>
                 </tr>
             </thead>
             <tbody>
                 {% for result in results %}
                 <tr>
-                    <td>{{ result.id }}</td>
-                    <td>{{ result.title }}</td>
-                    <td>{{ result.description }}</td>
-                    <td><a href="{{ url_for('static', filename=result.file_name) }}" target="_blank">Check File</a></td>
+                    <td>{{ result.rank }}</td>
+                    <td>{{ result.file_name }}</td>
+                    <td>{{ result.cos_sim }}</td>
+                    <td><a href="{{ url_for('static', filename=result.file_path) }}" target="_blank">Check File</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
